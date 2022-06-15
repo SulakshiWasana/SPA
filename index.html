@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pos system</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="assets/Style/style.css">
+    <link rel="stylesheet" href="assets/jQuery/jquery-3.6.0.min.js">
+    <style>
+        .customerform{display: none;}
+        .itemform{display: none;}
+        .homepage{display: none;}
+    </style>
+</head>
+
+<body>
+
+    <!-- Header  -->
+
+    <nav class="navbar navbar-expand-lg  navbar-light shadow p-3 mb-5" style="background-color:#537895" >
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                    aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item" id="btn-home">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item" id="btn-placeorder">
+                        <a class="nav-link" href="#">Orders</a>
+                    </li>
+                    <li class="nav-item" id="btn-item">
+                        <a class="nav-link" href="#">Items</a>
+                    </li>
+                    <li class="nav-item" id="btn-customer">
+                        <a class="nav-link" href="#">Customer</a>
+                    </li>
+                    <!--            <li class="nav-item dropdown">-->
+                    <!--              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">Others</a>-->
+                    <!--              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">-->
+                    <!--                <li id="btn-customer">-->
+                    <!--                  <a class="dropdown-item" href="Customer.html">Customer Information</a>-->
+                    <!--                </li>-->
+                    <!--                <li  id="btn-Order-Information" ><a class="dropdown-item" href="#">Order Information</a></li>-->
+                    <!--                <li><a class="dropdown-item" href="#">Seller</a></li>-->
+                </ul>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!--Order-->
+    <main class="container-fluid placeorder">
+        <section class="row">
+            <div class="col-xl-8 col-12">
+              <div class="row px-2">
+                <div class="col-12 col-xl-6">
+                    <form class="row g-2 pt-1 px-4 pb-1 ">
+<!--                        <h2 style="text-align: center; font-family:'Britannic Bold' "><b>Select Item</b></h2>-->
+                        <div class="card-header bg-primary font-weight-bolder">Select Item</div>
+                <div class="col-md-4 mt-3">
+                  <label for="validationDefault01" class="form-label"> <b>Item Code :</b></label>
+                  <select class="form-control" name="itcode" id="cmbItemId" style="height:33px; border: 1px solid #aaaaaa;">
+                  </select>
+                </div>
+                <div class="col-md-8 px-4 mt-3">
+                  <label for="inputEmail4" class="form-label"><b>Item Name :</b></label>
+                  <input type="text" name="itNames" id="itNames" class="form-control" disabled
+                         style="height:33px;  border: 1px solid #aaaaaa;" id="itemName">
+                </div>
+                <div class="col-md-4">
+                  <label for="inputEmail4" class="form-label"><b>Price :</b></label>
+                  <input type="text" id="itemprice" class="form-control" disabled
+                         style="height:33px; border: 1px solid #aaaaaa;" id="price">
+                </div>
+  
+                <div class="col-md-5 px-4">
+                  <label for="inputEmail4" class="form-label"> <b>Qty On Hand :</b></label>
+                  <input type="text" name="iqty" id="itemqty" class="form-control" disabled
+                         style="height:33px; border: 1px solid #aaaaaa;" id="Qtyonhand">
+                </div>
+                <div class="col-4">
+                  <label for="inputEmail4" class="form-label"><b>Order Qty :</b></label>
+                  <input type="number" name="OrderQty" id="OrderQty" class="form-control"
+                         style="height:33px; border: 1px solid #aaaaaa;" id="orderQty">
+                </div>
+                <div class="col-3 " style="position: relative; left: 20px; width:100px; height: 130px;">
+                  <label for="inputEmail4" id="discount" class="form-label"><b>Discount :</b></label>
+                  <input type="email" name="discount"  style="height:33px; border: 1px solid #aaaaaa;" class="form-control h-25 " id="txtDiscount">
+                </div>
+
+                <div class="col-6 mt-4 px-5">
+                  <button type="button" id="btnAddtoCart" class="btn navbar-light shadow"
+                          style="width: 140%; border-radius:8px; position: relative;  color:#ffff; background-color:coral; left: 210px; top:-60px;"><b>Add To Cart</b></button>
+                </div>
+              </form>
+
+                </div>
+
+                <!-- Invoice Details -->
+
+                <div class="col-12 col-xl-6" >
+                    <form class="row g-2 pt-2 pb-5 ">
+                        <!--<h2 style="text-align: center;font-family:'Britannic Bold'"><b>Invoice Details</b></h2>-->
+                        <div class="card-header bg-primary font-weight-bolder">Invoice Details</div>
+                <div class="px-4 col-md-4 mt-3">
+                  <label for="inputEmail4" class="form-label"><b>Order Id :</b></label>
+                  <h1><span  class="txtOrderId"></span></h1>
+                  <!-- <input type="text" > -->
+                </div>
+                <div class="col-md-7 mt-3">
+                  <label for="Date" id="date" class="form-label"><b>Date :</b></label>
+                  <input type="datetime-local" class="form-control" style="height:33px; border: 1px solid #aaaaaa;"
+                         id="datetime">
+                </div>
+                <div class="form-group px-4 col-md-4 mt-3">
+                  <label for="validationDefault01" class=""> <b>Customer Id :</b></label>
+                  <select class="form-control" name="cmbcustormerId" id="cmbcustormerId" style="height:33px; border: 1px solid #aaaaaa;">
+  
+                  </select>
+                </div>
+                <div class="col-md-7 ">
+                  <label for="inputEmail4" class="form-label"> <b>Name :</b></label>
+                  <input type="text" id="cusName" class="form-control" disabled
+                         style="height:33px; border: 1px solid #aaaaaa;" id="Name">
+                </div>
+                <div class="col-md-4 px-4">
+                  <label for="inputEmail4" class="form-label"><b>Salary :</b></label>
+                  <input type="text" id="CusSalary" class="form-control" disabled
+                         style="height:33px; border: 1px solid #aaaaaa;" id="Salary">
+                </div>
+  
+                <div class="col-md-7 px-1">
+                  <label for="inputEmail4" class="form-label"><b>Address :</b></label>
+                  <input type="text" id="CusAddress" class="form-control" disabled
+                         style="height:33px; border: 1px solid #aaaaaa;" id="Address">
+                </div>
+              </form>
+                </div>
+
+                  <table class="table mt-0 border-5" id="cartTable" style="position: relative; bottom: -50px;" bgcolor="#d3d3d3">
+                    <thead style="border: #1a1e21">
+                    <tr>
+                      <th class=" px-3">Item Id</th>
+                      <th class=" px-3">Item Name</th>
+                      <th class=" px-3">Quantity</th>
+                      <th class=" px-3">Price</th>
+                      <th class=" px-3">Total</th>
+                      <th class=" px-3">Option</th>
+      
+                    </tr>
+                    </thead>
+                    <tbody id="cartTabale">
+      
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Check Out -->
+      
+            <div class="col-xl-4 col-4 w-25" >
+              <div class="row">
+                <div class="col mt-0 ">
+<!--                    <div class="text-center" style="font-family:'Britannic Bold'">-->
+<!--                        <p class="mt-4 h2"><b>Check Out</b></p>-->
+                        <div class="col m-3 card-header bg-primary font-weight-bolder">Check Out</div>
+              <div class="row">
+                <div class="col-12 mt-4 ">
+                    <p class="h3  px-3 "style="font-family:'Britannic Bold'">Sub Total : <span id="txtsubTotal"></span></p>
+                  </div>
+                  <div class="col-12 mt-4 ">
+                    <p class="h3  px-3 "style="font-family:'Britannic Bold'">Total : <span id="txtTotal"></span></p>
+                  </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6"></div>
+                <div class="col-6 pt-5">
+                  <button type="button" id="cnfOrder" class="w-100 btn comfirmOrders shadow" style="border-radius:8px; background-color:limegreen; color: #ffff; position: relative; right: 10px;top: -50px">Comfirm Order</button>
+                </div>
+              </div>
+
+              </div>
+            </div>
+            </div>
+          </section>
+    </main>
+
+    <!-- Home Page-->
+
+    <div class="row homepage" >
+        <style>
+            body{
+                background-image: url("assets/images/back7.jpg");
+            }
+        </style>
+    </div>
+
+    <!-- Item -->
+
+    <div class="row itemform" >
+        <h1 style="margin-left: 15px; margin-top: -2px;">Item Form</h1>
+        <br>
+        <div class="form-group" style="width: 180px;">
+            <label for="txtItemSearch" style="margin-left: 60px; top: -20px">Search Item</label>
+            <input type="text" class="form-control" id="txtItemSearch" aria-describedby="emailHelp" placeholder="Search Item" style="margin-left: 55px">
+        </div>
+        <div class="col-6 px-5 p-5 mb-0" style="position: relative;top: -120px;">
+            <a class="btn btn-primary" id="btnSearch" href="#" role="button" style="margin: 10px; position: relative; top: 110px;">Search</a>
+            <a class="btn btn-danger" id="btnDelete" href="#" role="button" style="margin: 10px;  position: relative; top: 110px;">Delete</a>
+            <a class="btn btn-success" id="btnItem" href="#" role="button" style="margin: 10px; position: relative; top: 110px;">Save or Update</a>
+            <div class="col-3">
+                <form style=" position: relative; left: 700px;" >
+                    <div class="form-group" >
+                        <label for="txtItemID">Item Code</label>
+                        <input type="text" class="form-control" id="txtItemID" aria-describedby="emailHelp" placeholder="Enter ID - I00-000">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtItemName">Item Name</label>
+                        <input type="text" class="form-control" id="txtItemName" placeholder="Enter Name">
+                    </div>
+                </form>
+                <div class="col-3" style="margin-left: 250px;">
+                    <form style=" position: relative; left: 700px; margin-top: -125px;">
+                        <div class="form-group" style="width: 180px">
+                            <label for="txtItemQuantity">Item Quantity</label>
+                            <input type="text" class="form-control" id="txtItemQuantity" aria-describedby="emailHelp" placeholder="Enter Quantity">
+                        </div>
+                        <div class="form-group" style="width: 180px;">
+                            <label for="txtItemPrice">Price</label>
+                            <input type="text" class="form-control" id="txtItemPrice" placeholder="Enter Price">
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+    <div class="row">
+        <div class="col-12 p-5 px-5 mb-5" style="position: relative;top: -80px;">
+            <table class="table" style="background-color: gray">
+                <thead class="thead-dark" style="border-color: #1a1e21">
+                  <tr>
+                    <th scope="col">Item Code</th>
+                    <th scope="col">Item Name</th>
+                    <th scope="col">Item quantity</th>
+                    <th scope="col">Price</th>
+                  </tr>
+                </thead>
+                <tbody id="itemTable">
+                </tbody>
+              </table>
+        </div>
+
+    </div>
+</div>
+
+    <!-- Customer -->
+
+   <div class="row customerform" >
+       <h1 style="margin-left: 15px; margin-top: -2px;">Customer Form</h1>
+       <br>
+       <div class="form-group" style="width: 180px;">
+           <label for="txtCusSearch" style="margin-left: 60px; top: -20px">Search Customer</label>
+           <input type="text" class="form-control" id="txtCusSearch" aria-describedby="emailHelp" placeholder="Search Customer" style="margin-left: 55px">
+       </div>
+       <div class="col-6 px-5 p-5 mb-0" style="position: relative;top: -120px;">
+           <a class="btn btn-primary" id="btnSearch" href="#" role="button" style="margin: 10px; position: relative; top: 110px;">Search</a>
+           <a class="btn btn-danger" id="btnDelete" href="#" role="button" style="margin: 10px;  position: relative; top: 110px;">Delete</a>
+           <a class="btn btn-success" id="btnCustomer" href="#" role="button" style="margin: 10px; position: relative; top: 110px;">Save or Update</a>
+           <div class="col-3">
+               <form style=" position: relative; left: 700px;" >
+                   <div class="form-group" >
+                       <label for="txtCusID">Customer ID</label>
+                       <input type="text" class="form-control" id="txtCusID" placeholder="Enter ID - C00-000">
+                       <!--                    <p><small id="errorMsg" class="text-danger p-1"></small></p>-->
+                   </div>
+                   <div class="form-group">
+                       <label for="txtCusName">Customer Name</label>
+                       <input type="text" class="form-control" id="txtCusName" placeholder="Enter Name">
+                   </div>
+               </form>
+
+               <div class="col-3" style="margin-left: 250px;">
+                   <form style=" position: relative; left: 700px; margin-top: -125px;">
+                       <div class="form-group" style="width: 180px">
+                           <label for="txtCusAdd">Customer Address</label>
+                           <input type="text" class="form-control" id="txtCusAdd" aria-describedby="emailHelp" placeholder="Enter Address">
+                       </div>
+                       <div class="form-group" style="width: 180px;">
+                           <label for="txtCusSal">Customer Salary</label>
+                           <input type="text" class="form-control" id="txtCusSal" placeholder="Enter Salary">
+                       </div>
+                   </form>
+               </div>
+
+           </div>
+       </div>
+
+        <div class="row">
+            <div class="col-12 p-5 px-5 mb-5" style="position: relative;top: -80px;">
+                <table class="table" style="background-color: gray">
+                    <thead class="thead-dark" style="border-color: #1a1e21">
+                  <tr>
+                    <th scope="col">Customer ID</th>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Customer Address</th>
+                    <th scope="col">Customer Salary</th>
+                  </tr>
+                </thead>
+                <tbody id="customerTable">
+
+                </tbody>
+              </table>
+        </div>
+
+    </div>
+</div>
+      <script src="assets/jQuery/jquery-3.6.0.min.js"></script>
+      <script src="assets/js/bootstrap.bundle.min.js"></script>
+      <script src="db/DB.js"></script>
+      <script src="model/customerDTO.js"></script>
+      <script src="model/itemDTO.js"></script>
+      <script src="model/orderDTO.js"></script>
+      <script src="model/orderDetailsDTO.js"></script>
+      <script src="controller/customerController.js"></script>
+      <script src="controller/itemController.js"></script>
+      <script src="controller/placeOrderController.js"></script>
+      <script src="model/cartDTO.js"></script>
+
+<script>
+    document.getElementById("btn-customer").addEventListener("click",function(){
+        document.getElementsByClassName("placeorder")[0].style.display="none"
+        document.getElementsByClassName("itemform")[0].style.display="none"
+        document.getElementsByClassName("customerform")[0].style.display="block"
+        document.getElementsByClassName("homepage")[0].style.display="none"
+    })
+    document.getElementById("btn-item").addEventListener("click",function(){
+        document.getElementsByClassName("placeorder")[0].style.display="none"
+        document.getElementsByClassName("itemform")[0].style.display="block"
+        document.getElementsByClassName("customerform")[0].style.display="none"
+        document.getElementsByClassName("homepage")[0].style.display="none"
+    })
+
+    document.getElementById("btn-home").addEventListener("click",function(){
+        document.getElementsByClassName("placeorder")[0].style.display="none"
+        document.getElementsByClassName("itemform")[0].style.display="none"
+        document.getElementsByClassName("customerform")[0].style.display="none"
+        document.getElementsByClassName("homepage")[0].style.display="block"
+    })
+    document.getElementById("btn-placeorder").addEventListener("click",function(){
+        document.getElementsByClassName("placeorder")[0].style.display="block"
+        document.getElementsByClassName("itemform")[0].style.display="none"
+        document.getElementsByClassName("customerform")[0].style.display="none"
+        document.getElementsByClassName("homepage")[0].style.display="none"
+    })
+</script>
+
+
+
+</body>
+
+
+</html>
